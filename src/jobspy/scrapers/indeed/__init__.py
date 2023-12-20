@@ -34,6 +34,8 @@ from .. import Scraper, ScraperInput, Site
 
 
 class IndeedScraper(Scraper):
+    total_results = None
+
     def __init__(self, proxy: str | None = None):
         """
         Initializes IndeedScraper with the Indeed job search url
@@ -191,6 +193,7 @@ class IndeedScraper(Scraper):
 
         #: get first page to initialize session
         job_list, total_results = self.scrape_page(scraper_input, 0)
+        IndeedScraper.total_results = total_results
 
         with ThreadPoolExecutor(max_workers=1) as executor:
             futures: list[Future] = [
