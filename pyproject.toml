@@ -24,6 +24,41 @@ pydantic = "^2.3.0"
 pytest = "^7.4.1"
 jupyter = "^1.0.0"
 
+
+[tool.pdm]
+[tool.pdm.dev-dependencies]
+dev = [
+    "pytest<8.0.0,>=7.4.1",
+    "jupyter<2.0.0,>=1.0.0",
+]
+
+[tool.pdm.build]
+includes = ["src/jobspy"]
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[project]
+name = "python-jobspy"
+version = "1.1.30"
+description = "Job scraper for LinkedIn, Indeed, Glassdoor & ZipRecruiter"
+authors = [
+    {name = "bitnom", email = "14287229+bitnom@users.noreply.github.com"},
+    {name = "Zachary Hampton", email = "zachary@bunsly.com"},
+    {name = "Cullen Watson", email = "cullen@bunsly.com"},
+]
+dependencies = [
+    "requests<3.0.0,>=2.31.0",
+    "tls-client<1.0.0,>=0.2.1",
+    "beautifulsoup4<5.0.0,>=4.12.2",
+    "pandas<3.0.0,>=2.1.0",
+    "NUMPY==1.24.2",
+    "pydantic<3.0.0,>=2.3.0",
+]
+requires-python = ">=3.10,<4.0"
+readme = "README.md"
+license = {text = "MIT"}
+
+[project.urls]
+homepage = "https://github.com/Bunsly/JobSpy"
